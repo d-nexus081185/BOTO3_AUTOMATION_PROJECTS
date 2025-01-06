@@ -1,13 +1,13 @@
-# # Import all the modules and Libraries
-# import boto3 # type: ignore
-# # Open Management Console with "default" as the user created using the AWS configure command
-# aws_management_console = boto3.session.Session(profile_name="default")
-# # Open IAM console
-# iam_console = aws_management_console.client(service_name="iam")
-#  # Use Boto3 Documentation to get more information (https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
-# iam_users = iam_console.list_users()
-# for each_iam_user in iam_users['Users']:
-#     print(each_iam_user['UserName'])
+# Using Boto3, you can query a variety of IAM entities:
+
+# Users
+# Groups
+# Roles
+# Policies
+# Instance Profiles
+# Access Keys
+# Server Certificates
+# Each of these entities provides methods to retrieve and manage their details
 
 
 import boto3
@@ -17,4 +17,22 @@ iam_console = aws_management_console.resource('iam')
 for each_user in iam_console.users.all():
     print(each_user.name)
 
-    
+for each_group in iam_console.groups.all():
+    print(each_group.name)
+
+for each_role in iam_console.roles.all():
+    print(each_role.name)
+
+for each_policy in iam_console.policies.all():
+    print(each_policy.policy_name)
+
+for each_instance_profile in iam_console.instance_profiles.all():
+    print(each_instance_profile.name)
+
+for cert in iam_console.server_certificates.all():
+    print(cert.name)
+
+
+
+
+

@@ -1,4 +1,4 @@
-# Using Boto3, you can query a variety of IAM entities:
+# Using Boto3, to query a variety of IAM entities:
 
 # Users
 # Groups

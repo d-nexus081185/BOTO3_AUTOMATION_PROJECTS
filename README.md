@@ -49,7 +49,7 @@ pip install boto3
 
 Setting Up the Repository
 1. Clone the repository:
-git clone https://github.com/yourusername/BOTO3_AUTOMATION_PROJECTS.git
+git clone https://github.com/d-nexus081185/BOTO3_AUTOMATION_PROJECTS.git
 
 
 2. Navigate to the project folder:

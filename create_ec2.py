@@ -1,7 +1,7 @@
-import boto3 # type: ignore
+import boto3
 
-def create_ec2_instance():
-    # Use the 'boto3_user1' profile configured in the AWS CLI
+def create_ec2_instance(instance_name="MyEC2Instance"):
+    # Use the 'default' profile configured in the AWS CLI
     session = boto3.Session(profile_name='default')
 
     # Create EC2 client
@@ -13,9 +13,19 @@ def create_ec2_instance():
         'InstanceType': 't2.micro',
         'MinCount': 1,
         'MaxCount': 1,
-        'KeyName': 'my_key_pair',  # Use a valid key_pair
+        'KeyName': 'my_key_pair',  # Use a valid key pair
         'SecurityGroupIds': ['sg-0e711f9f86eaeee6c'],  # Replace with your specified security group ID
-    
+        'TagSpecifications': [
+            {
+                'ResourceType': 'instance',
+                'Tags': [
+                    {
+                        'Key': 'Name',
+                        'Value': instance_name  # Assign the specified instance name
+                    }
+                ]
+            }
+        ]
     }
 
     try:
@@ -46,4 +56,5 @@ def create_ec2_instance():
         return None
 
 if __name__ == "__main__":
-    create_ec2_instance()
+    # Provide a name for the EC2 instance
+    create_ec2_instance(instance_name="CodeBuild_Server")
